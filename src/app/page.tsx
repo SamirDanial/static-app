@@ -1,113 +1,173 @@
-import Image from 'next/image'
+"use client";
+
+import { useState } from "react";
+import logo from "../assets/sGroup-3.png";
+import teamwork2 from "../assets/teamwork2.jpg";
+import Image from "next/image";
+import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
+  const [carouselSettings, setCarouselSettings] = useState({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3, // Adjust the number of visible slides as needed
+    slidesToScroll: 1,
+  });
+
+  // Array of images for the carousel
+  const carouselImages = [
+    "/party.jpg",
+    "/party2.jpg",
+    "/happy-people.png",
+    // Add more image paths as needed
+  ];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="flex bg-white flex-col h-full w-full overflow-hidden mb-10">
+      <div
+        id="navbar"
+        className="flex z-50 flex-row w-fu lg:w-[1200px] bg-white fixed left-0 right-0 lg:mx-auto shadow-lg"
+      >
+        <div id="logo" className="ml-9 flex-1 py-[12px]">
+          <Image
+            src={logo}
+            className="w-[50px] lg:w-[75px] h-[50px] lg:h-[75px]"
+            alt="Picture of the author"
+          />
+        </div>
+        <div className="flex flex-row w-[250px]">
+          <div
+            id="email"
+            className="bg-purple-100 flex-1 flex flex-col justify-center items-center"
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <AiOutlineMail size={24} />
+          </div>
+          <div
+            id="phone"
+            className="bg-yellow-300 flex-1 flex flex-col justify-center items-center"
+          >
+            <AiOutlinePhone size={24} />
+          </div>
         </div>
       </div>
+      <div className="w-full flex flex-col lg:flex-row">
+        <div className="lg:flex-1 h-full w-full">
+          <div
+            className="h-screen relative"
+            style={{
+              backgroundImage: 'url("/party.jpg")',
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          >
+            <div className="bg-black w-full h-[200px] lg:w-[600px] absolute bottom-0 right-0 flex flex-col pl-10 pt-10">
+              <p className="text-white font-sans text-[20px] font-bold">
+                DAS IST PROMOPRO
+              </p>
+              <p className="text-white pt-3">
+                In der ipsum dolor sit amet consectetur adipisic. unde.
+              </p>
+              <p className="text-white">Promopro dolor sit amet consectetur</p>
+              <p className="text-white">
+                Lorem ipsum dolor sit amet consectetur adipisic. unde. un
+                realistoc
+              </p>
+            </div>
+          </div>
+          <div className="h-[800px] flex flex-col justify-center items-center">
+            <div className="flex items-center flex-col lg:flex-row gap-8">
+              <div className="h-[5px] w-[100px] bg-orange-300" />
+              <p className="text-[45px] pl-5 lg:pl-0 font-bold leading-snug">
+                Der Puls der Technoszene
+              </p>
+            </div>
+            <div className="max-w-[700px] lg:pl-6 flex flex-col items-center">
+              <p className="pl-5 lg:pl-28">
+                Unsere Mission ist es, einzigartige Festivalmomente zu schaffen,
+                die die Liebe zur elektronischen Musik teilen. Mit einem Team
+                leidenschaftlicher Techno-Enthusiasten sind wir der Antrieb
+                hinter unvergesslichen Events, welche allen Beteiligten ein
+                gelungenes Erlebnis garantieren.
+              </p>
+              <Image
+                src={teamwork2}
+                className="w-[600px] lg:pl-[75px] mt-5 h-[350px]"
+                alt="nice team work"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 w-full h-full text-white bg-pink-300">
+          <div className="h-[730px] flex flex-col justify-center">
+            <div className="flex pl-5 lg:pl-32 flex-col items-start text-[50px] font-bold leading-snug">
+              <p>Festival-</p>
+              <p>Planung mit</p>
+              <p>PromoPro.</p>
+            </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+            <div className="text-[30px] pl-5 lg:pl-32 pt-4">
+              <p>Für ein rundum gelungenes Techno-Erlebnis.</p>
+            </div>
+
+            <div className=" pl-32">
+              <div className=" bg-white mt-10 w-[120px] h-[40px] flex flex-col items-center justify-center rounded-[5px]">
+                <p className="text-black font-semibold">KONTAKT</p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="w-full h-[1500px]"
+            style={{
+              backgroundImage: 'url("/party2.jpg")',
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          ></div>
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="h-[350px] w-full">
+        <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-8 mt-20">
+          <div className="h-[5px] w-[100px] bg-orange-300" />
+          <div>
+            <p className="text-[45px] font-bold">
+              Rückblick auf elektrisierende Nächte:
+            </p>
+          </div>
+        </div>
+        <div id="carusal" className="mt-4 px-2">
+          <Slider {...carouselSettings}>
+            {carouselImages.map((image, index) => (
+              <div key={index} className="h-[150px] w-[150px] pl-3">
+                <img
+                  src={image}
+                  alt={`carousel-image-${index}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
+      <div className="mt-[200px] lg:mt-20 w-full h-[350px] flex flex-col lg:flex-row">
+        <div className="flex-1">
+          <p className="pl-5 lg:pl-[400px] text-[30px] text-gray-500">
+            Wir sind stets auf der Suche nach kreativen und engagierten Partnern
+            – sei es auf oder hinter der Bühne. Nehmen Sie gerne Kontakt mit uns
+            auf.
+          </p>
+        </div>
+        <div className="flex-1 flex flex-col justify-center items-center pt-10 mb-10">
+          <div className="bg-orange-300 px-5 py-3 mb-[200px] rounded-md">
+            <p className="text-white font-bold">KONTAKT AUFNEHMEN</p>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4" />
     </main>
-  )
+  );
 }
